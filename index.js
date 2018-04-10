@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 5000
+
 var path = require('path');
 var mongoose = require('mongoose');
 var CronJob = require('cron').CronJob;
 
-var appdb = require('./lib/db');
+var appdb = require('./app/db');
 
 app.get('/', function(req, res){ res.send('Hello World!') })
 //app.use('/public', express.static(path.join(__dirname, 'public')))
 
-var scraper = require('./lib/scraper');
+var scraper = require('./app/scraper');
 
 var mongoDB = 'mongodb://localhost/test';
 mongoose.connect(mongoDB);
@@ -46,4 +48,4 @@ if(!job.running)
     job.start();
 console.log('job status', job.running);
 
-app.listen(3000, function(){ console.log('Example app listening on port 3000!') })
+app.listen(PORT, function(){ console.log('Example app listening on port '+ PORT) })
