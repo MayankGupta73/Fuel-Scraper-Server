@@ -13,7 +13,7 @@ app.get('/', function(req, res){ res.send('Hello World!') })
 
 var scraper = require('./app/scraper');
 
-var mongoDB = process.env.MONGO_URL;
+var mongoDB = process.env.MONGOLAB_URI || 'mongodb://localhost/test';
 mongoose.connect(mongoDB);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
