@@ -240,7 +240,7 @@
       <workItem from="1523203981736" duration="8327000" />
       <workItem from="1523292102640" duration="4652000" />
       <workItem from="1523381790400" duration="5372000" />
-      <workItem from="1523435735392" duration="1584000" />
+      <workItem from="1523435735392" duration="1573000" />
     </task>
     <task id="LOCAL-00001" summary="Add db support, complete scraping and add scheduling">
       <created>1523296070035</created>
@@ -274,7 +274,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33162000" />
+    <option name="totallyTimeSpent" value="33151000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
