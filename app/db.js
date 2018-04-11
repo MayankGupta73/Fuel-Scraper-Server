@@ -3,11 +3,15 @@ var StateModel = require('./models/statemodel')
 
 exports.storePriceList = function (priceList) {
     //Store the list in db
+
+    console.log("Starting db entry");
     var i;
     for(i=0; i<priceList.length; i++){
         saveAndUpdateList(priceList[i]);
     }
+    console.log("Done db entry");
 }
+
 
 function saveAndUpdateList(stateList) {
 

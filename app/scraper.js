@@ -10,11 +10,11 @@ var priceList = [];
 var petrolDone = false;
 var dieselDone = false;
 
-//var resp;
+var resp;
 
-exports.scrapePrices = function () {
+exports.scrapePrices = function (res) {
 
-    //resp = res;
+    resp = res;
     scrapePetrolPrice();
     scrapeDieselPrice();
     // while (petrolPrice.length == 0 || dieselPrice.length == 0){
@@ -28,6 +28,7 @@ function storeList(){
     //Call db and store the list
 
     db.storePriceList(priceList);
+    resp.send("Done db operation");
 }
 
 function checkComplete() {

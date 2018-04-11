@@ -19,7 +19,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.get('/start', function (req, res) {
-    var petrolPrices = scraper.scrapePrices();
+    var petrolPrices = scraper.scrapePrices(res);
     //console.log(petrolPrices)
     //res.send(petrolPrices);
 })
