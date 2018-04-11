@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var StateModel = require('./models/statemodel')
+var DateModel = require('./models/datemodel')
 
 exports.storePriceList = function (priceList) {
     //Store the list in db
@@ -10,8 +11,24 @@ exports.storePriceList = function (priceList) {
         saveAndUpdateList(priceList[i]);
     }
     console.log("Done db entry");
-    //Saving Date
 
+    saveDate();
+}
+
+function saveDate() {
+    //Saving Date
+    var curDate = new Date();
+    var newDate = new DateModel({date: curDate.toDateString()});
+
+    DateModel.remove({}, function (err) {
+        console.log("Removing prev dates.")
+    });
+    newDate.save( function (err) {
+        if(err){
+            console.error("Unable to save date: "+err);
+        }
+        console.log("Saved date: "+curDate.toDateString());
+    });
 }
 
 

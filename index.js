@@ -51,6 +51,20 @@ if(!job.running)
     job.start();
 console.log('job status', job.running);
 
-setScraper();
+var DateModel = require('./app/models/datemodel')
+var curDate = new Date();
+DateModel.find({date: curDate.toDateString()}, function (err, docs) {
+    if(docs.length){
+        console.log("Already scraped today!!")
+    }
+    else {
+        console.log("Scheduling scraping");
+        setScraper();
+    }
+
+    if(err){
+        console.log("Error in fetching date: "+err);
+    }
+})
 
 app.listen(PORT, function(){ console.log('Example app listening on port '+ PORT) })
