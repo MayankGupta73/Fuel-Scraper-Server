@@ -35,17 +35,22 @@ var job = new CronJob({
         /*
          * Runs everyday 01:00:00 AM.
          */
-        console.log("Scheduler starting");
-
-        scraper.scrapePrices();
+        setScraper();
     },
     start: false,
     timeZone: 'Asia/Kolkata'
 });
 
+function setScraper(){
+    console.log("Scheduler starting");
+    scraper.scrapePrices();
+}
+
 console.log('job status', job.running);
 if(!job.running)
     job.start();
 console.log('job status', job.running);
+
+setScraper();
 
 app.listen(PORT, function(){ console.log('Example app listening on port '+ PORT) })

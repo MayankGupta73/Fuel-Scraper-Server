@@ -10,6 +10,8 @@ exports.storePriceList = function (priceList) {
         saveAndUpdateList(priceList[i]);
     }
     console.log("Done db entry");
+    //Saving Date
+
 }
 
 
