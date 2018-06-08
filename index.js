@@ -19,6 +19,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.get('/start', function (req, res) {
+    clearStateDB()
     var petrolPrices = scraper.scrapePrices(res);
     //console.log(petrolPrices)
     //res.send(petrolPrices);
@@ -32,9 +33,8 @@ app.get('/fetch/:stateName', function (req, res) {
 var job = new CronJob({
     cronTime: '00 12 23 * * *',
     onTick: function() {
-        /*
-         * Runs everyday 01:00:00 AM.
-         */
+
+        clearStateDB()
         setScraper();
     },
     start: false,
@@ -44,6 +44,10 @@ var job = new CronJob({
 function setScraper(){
     console.log("Scheduler starting");
     scraper.scrapePrices();
+}
+
+function clearStateDB() {
+    appdb.clearDB()
 }
 
 console.log('job status', job.running);
@@ -59,6 +63,7 @@ DateModel.find({date: curDate.toDateString()}, function (err, docs) {
     }
     else {
         console.log("Scheduling scraping");
+        clearStateDB()
         setScraper();
     }
 
