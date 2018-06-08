@@ -73,3 +73,13 @@ exports.fetchStatePrice = function (stateName, res) {
         //return doc;
     })
 }
+
+exports.clearDB = function () {
+    StateModel.remove({}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        else
+            console.log("Finished clearing the StateModel Database");
+    })
+}
