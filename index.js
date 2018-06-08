@@ -25,6 +25,10 @@ app.get('/start', function (req, res) {
     //res.send(petrolPrices);
 })
 
+app.get('/clear', function (req, res) {
+    clearStateDB()
+})
+
 
 app.get('/fetch/:stateName', function (req, res) {
     var prices = appdb.fetchStatePrice(req.params.stateName.toLowerCase(), res);
